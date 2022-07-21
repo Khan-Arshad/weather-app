@@ -1,0 +1,65 @@
+.title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.hourly {
+  background-color: #b1b1b1;
+  border-radius: 10px;
+  height: 40px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px 20px;
+}
+
+.weather-icon-small {
+  width: 50px;
+}
+
+.hourly {
+  color: #212121;
+  flex: 1 1;
+  font-weight: 600;
+}
+
+.description {
+  color: #1a2530;
+  flex: 1 1;
+  margin-right: 15px;
+  text-align: right;
+  font-weight: 400;
+}
+
+.temp {
+  color: #1a2530;
+  font-weight: 600;
+}
+
+.hourly-details-grid {
+  display: grid;
+  grid-row-gap: 0;
+  grid-column-gap: 15px;
+  row-gap: 0;
+  column-gap: 15px;
+  flex: 1 1;
+  grid-template-columns: auto auto;
+  padding: 5px 15px;
+}
+
+.hourly-details-grid-item {
+  display: flex;
+  height: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hourly-details-grid-item label:first-child {
+  color: #e4e4e4;
+}
+
+.hourly-details-grid-item label:last-child {
+  color: #a1a1a1;
+}
