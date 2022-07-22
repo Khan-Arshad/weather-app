@@ -1,16 +1,15 @@
-import { useState }   from "react";
 import {
   Accordion,
   AccordionItemHeading,
   AccordionItem,
   AccordionItemButton,
+  AccordionItemState,
   AccordionItemPanel,
 } from "react-accessible-accordion";
 import "./dailyWeather.css";
 import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 
 const DailyWeather = ({ weather, tempSymbol }) => {
-  const [isOpen, setIsOpen] = useState(false);
   const dayOfWeek = (timestamp) => {
     const a = new Date(timestamp * 1000);
     const days = [
@@ -24,18 +23,9 @@ const DailyWeather = ({ weather, tempSymbol }) => {
     ];
     return days[a.getDay()];
   };
-
-  const arrowIcon = () => {
-    if (isOpen) {
-      return <IoMdArrowDropup />;
-    } else {
-      return <IoMdArrowDropdown />;
-    }
-  }
   return (
     <>
-      <Accordion allowZeroExpanded
-      onChange={() => setIsOpen(!isOpen)}>
+      <Accordion allowZeroExpanded>
         {weather.slice(1).map((day, index) => (
           <AccordionItem key={index}>
             <AccordionItemHeading>
@@ -78,7 +68,11 @@ const DailyWeather = ({ weather, tempSymbol }) => {
                       )}
                     </span>
                   </label>
-                  <span className="arrow">{arrowIcon()}</span>
+                  <span className="arrow">
+                  <AccordionItemState>
+                    {({ expanded }) => (expanded ? <IoMdArrowDropup /> : <IoMdArrowDropdown />)}
+                </AccordionItemState>
+                    </span>
                 </div>
               </AccordionItemButton>
             </AccordionItemHeading>
