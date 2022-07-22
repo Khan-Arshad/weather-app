@@ -43,7 +43,7 @@ function App() {
   return (
     <div className="container">
       <h1 className="app-heading">Weather Search</h1>
-      <p className="app-description">Get the current, hourly and 7 day forecast</p>
+      <p className="app-description">Get the current, hourly and daily forecast</p>
       <Search
         onSearchChange={handleOnSearchChange}
         search={search}
