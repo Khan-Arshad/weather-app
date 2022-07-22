@@ -38,6 +38,11 @@
   font-weight: 600;
 }
 
+.arrow {
+  color: #ffffff;
+  font-size: 30px;
+}
+
 .daily-details-grid {
   display: grid;
   grid-row-gap: 0;

@@ -1,3 +1,4 @@
+import { useState }   from "react";
 import {
   Accordion,
   AccordionItemHeading,
@@ -6,8 +7,10 @@ import {
   AccordionItemPanel,
 } from "react-accessible-accordion";
 import "./hourlyWeather.css";
+import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 
 const HourlyWeather = ({ hourly, tempSymbol }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const hourOfDay = (timestamp) => {
     const a = new Date(timestamp * 1000);
     const hours = [
@@ -39,9 +42,20 @@ const HourlyWeather = ({ hourly, tempSymbol }) => {
     return hours[a.getHours()];
   };
 
+  const arrowIcon = () => {
+    if (isOpen) {
+      return <IoMdArrowDropup />;
+    } else {
+      return <IoMdArrowDropdown />;
+    }
+  }
+  
+
   return (
     <>
-      <Accordion allowZeroExpanded>
+      <Accordion allowZeroExpanded
+        onChange={() => setIsOpen(!isOpen)}
+      >
         {hourly.slice(1, 25).map((hourly, index) => (
           <AccordionItem key={index}>
             <AccordionItemHeading>
@@ -71,6 +85,7 @@ const HourlyWeather = ({ hourly, tempSymbol }) => {
                       )}
                     </span>
                   </label>
+                  <span className="arrow">{arrowIcon()}</span>
                 </div>
               </AccordionItemButton>
             </AccordionItemHeading>
